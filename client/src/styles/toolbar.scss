@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "icomoon";
+  src: url("./icon-fonts/icomoon.eot?qgrmr5");
+  src: url("./icon-fonts/icomoon.eot?qgrmr5#iefix") format("embedded-opentype"),
+    url("./icon-fonts/icomoon.ttf?qgrmr5") format("truetype"),
+    url("./icon-fonts/icomoon.woff?qgrmr5") format("woff"),
+    url("./icon-fonts/icomoon.svg?qgrmr5#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+  font-family: "icomoon" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-save:before {
+  content: "\e906";
+}
+.icon-arrow:before {
+  content: "\e907";
+}
+.icon-circle:before {
+  content: "\e900";
+}
+.icon-eraser:before {
+  content: "\e901";
+}
+.icon-line:before {
+  content: "\e902";
+}
+.icon-paintbrush:before {
+  content: "\e903";
+}
+.icon-palette:before {
+  content: "\e904";
+}
+.icon-square:before {
+  content: "\e905";
+}
+
+@import "./variables.scss";
+.toolbar {
+  height: $toolbar-height;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  padding: 0px 100px;
+  width: 100%;
+  box-shadow: 0px 2px 3px rgba(128, 126, 126, 0.418);
+  z-index: 20;
+
+  &__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    font-size: 18px;
+    height: 25px;
+    width: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0px 5px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: all 0.3s ease;
+    &:hover {
+      color: rgba(214, 117, 7, 0.74);
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(-45deg);
+}
+.arrow-reverse {
+  position: relative;
+
+  transform: rotate(180deg);
+}
+.setting-bar {
+  height: $toolbar-height;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 2px 3px rgba(128, 126, 126, 0.418);
+  top: $toolbar-height;
+}
