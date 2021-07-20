@@ -8,6 +8,9 @@ import { Modal, Button, InputGroup, FormControl } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Square from '../tools/Square';
 import axios from 'axios'
+import URL from '../config';
+
+
 
 export const Canvas = observer(() => {
   const canvasRef = React.useRef();
@@ -18,7 +21,7 @@ export const Canvas = observer(() => {
   React.useEffect(() => {
     canvasState.setCanvas(canvasRef.current)
     let ctx = canvasRef.current.getContext('2d')
-    axios.get(`http://localhost:5000/image?id=${params.id}`)
+    axios.get(`http://${URL}image?id=${params.id}`)
         .then(response => {
             const img = new Image()
             img.src = response.data
@@ -31,7 +34,7 @@ export const Canvas = observer(() => {
 
 React.useEffect(() => {
     if (canvasState.username) {
-        const socket = new WebSocket(`ws://localhost:5000/`);
+        const socket = new WebSocket(`ws://${URL}`);
         canvasState.setSocket(socket)
         canvasState.setSessionId(params.id)
         toolState.setTool(new Brush(canvasRef.current, socket, params.id))
@@ -78,7 +81,7 @@ const drawHandler = (msg) => {
 
 const mouseDownHandler = () => {
     canvasState.pushToUndo(canvasRef.current.toDataURL())
-    axios.post(`http://localhost:5000/image?id=${params.id}`, {img: canvasRef.current.toDataURL()})
+    axios.post(`http://${URL}image?id=${params.id}`, {img: canvasRef.current.toDataURL()})
         .then(response => console.log(response.data))
 }
 
